@@ -1,0 +1,4 @@
+include LICENSE
+include subscription_manager/bin/sat5to6
+recursive-include subscription_manager/src/subscription_manager/migrate/ *
+recursive-include subscription_manager/po *

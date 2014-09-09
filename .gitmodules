@@ -1,0 +1,3 @@
+[submodule "subscription_manager"]
+	path = subscription_manager
+	url = git://github.com/candlepin/subscription-manager
