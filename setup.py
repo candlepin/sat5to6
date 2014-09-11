@@ -18,7 +18,7 @@ import subprocess
 
 from setuptools import setup
 
-from distutils import cmd
+from distutils import cmd, log
 from distutils.command.install_data import install_data as _install_data
 from distutils.command.build import build as _build
 
@@ -29,13 +29,13 @@ class build_trans(cmd.Command):
     submodule_root = os.path.join(os.curdir, "subscription_manager")
 
     def initialize_options(self):
-        pass
+        self.build_base = None
 
     def finalize_options(self):
-        pass
+        self.set_undefined_options('build', ('build_base', 'build_base'))
 
     def compile(self, src, dest):
-        print 'Compiling %s' % src
+        log.info("Compiling %s" % src)
         cmd = ['msgfmt', '-c', '--statistics', '-o', dest, src]
         rc = subprocess.call(cmd)
         if rc != 0:
@@ -48,7 +48,7 @@ class build_trans(cmd.Command):
                 if f.endswith('.po'):
                     lang = f[:-3]
                     src = os.path.join(path, f)
-                    dest_path = os.path.join('build', 'locale', lang, 'LC_MESSAGES')
+                    dest_path = os.path.join(self.build_base, 'locale', lang, 'LC_MESSAGES')
                     dest = os.path.join(dest_path, 'sat5to6.mo')
                     if not os.path.exists(dest_path):
                         os.makedirs(dest_path)
