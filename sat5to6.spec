@@ -17,9 +17,18 @@ URL:     https://www.candlepinproject.org
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Requires: subscription-manager >= 0:1.8.22
 Requires: python-rhsm >= 0:1.13.2
 Requires: rhnlib
+
+%if 0%{?rhel} == 5
+Requires: subscription-manager >= 0:1.8.24
+%endif
+%if 0%{?rhel} == 6
+Requires: subscription-manager >= 0:1.9.12
+%endif
+%if 0%{?rhel} == 7
+Requires: subscription-manager >= 0:1.10.14-10
+%endif
 
 # Since the migration data package is not in Fedora, we can only require it
 # on RHEL.
