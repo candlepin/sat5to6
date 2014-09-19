@@ -13,11 +13,12 @@
 
 Name: sat5to6
 Version: 1.0.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Migration tool for moving from Satellite 5 to Satellite 6
 Group:   System Environment/Base
 License: GPLv2
 URL:     https://www.candlepinproject.org
+BuildArch: noarch
 
 Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -77,6 +78,9 @@ rm -rf %{buildroot}
 %{_mandir}/man8/%{name}.8*
 
 %changelog
+* Fri Sep 19 2014 Alex Wood <awood@redhat.com> 1.0.1-2
+- Mark this package as noarch
+
 * Fri Sep 19 2014 Alex Wood <awood@redhat.com> 1.0.1-1
 - Add man page
 
