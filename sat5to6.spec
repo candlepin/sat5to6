@@ -8,7 +8,7 @@
 
 Name: sat5to6
 Version: 1.0.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Migration tool for moving from Satellite 5 to Satellite 6
 Group:   System Environment/Base
 License: GPLv2
@@ -21,10 +21,10 @@ Requires: python-rhsm >= 0:1.13.2
 Requires: rhnlib
 
 %if 0%{?rhel} == 5
-Requires: subscription-manager >= 0:1.8.24
+Requires: subscription-manager >= 0:1.8.25
 %endif
 %if 0%{?rhel} == 6
-Requires: subscription-manager >= 0:1.9.12
+Requires: subscription-manager >= 0:1.9.13
 %endif
 %if 0%{?rhel} == 7
 Requires: subscription-manager >= 0:1.10.14-10
@@ -71,5 +71,8 @@ rm -rf %{buildroot}
 %{python2_sitelib}/%{name}-*.egg-info
 
 %changelog
+* Fri Sep 19 2014 Alex Wood <awood@redhat.com> 1.0.0-2
+- Update version requirements for subscription-manager
+
 * Sun Sep 07 2014 Alex Wood <awood@redhat.com> 1.13.1-1
 - Initial packaging
