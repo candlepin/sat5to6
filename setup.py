@@ -94,7 +94,7 @@ cmdclass = {
 }
 
 setup(name="sat5to6",
-      version='1.0.0',
+      version='1.0.1',
       url="http://www.candlepinproject.org",
       description="Migrate Satellite 5 systems to Satellite 6.",
       license="GPLv2",
@@ -109,6 +109,7 @@ setup(name="sat5to6",
        },
       data_files=[
           ('sbin', ['subscription_manager/bin/sat5to6']),
+          ('share/man/man8', ['subscription_manager/man/sat5to6.8']),
       ],
       include_package_data=True,
       install_requires=install_requires,

@@ -1,3 +1,8 @@
+%global _binary_filedigest_algorithm 1
+%global _source_filedigest_algorithm 1
+%global _binary_payload w9.gzdio
+%global _source_payload w9.gzdio
+
 %global _hardened_build 1
 
 %if 0%{?rhel} && 0%{?rhel} <= 6
@@ -7,8 +12,8 @@
 %endif
 
 Name: sat5to6
-Version: 1.0.0
-Release: 2%{?dist}
+Version: 1.0.1
+Release: 1%{?dist}
 Summary: Migration tool for moving from Satellite 5 to Satellite 6
 Group:   System Environment/Base
 License: GPLv2
@@ -69,8 +74,12 @@ rm -rf %{buildroot}
 %attr(755,root,root) %{_sbindir}/sat5to6
 %{python2_sitelib}/%{name}/*
 %{python2_sitelib}/%{name}-*.egg-info
+%{_mandir}/man8/%{name}.8*
 
 %changelog
+* Fri Sep 19 2014 Alex Wood <awood@redhat.com> 1.0.1-1
+- Add man page
+
 * Fri Sep 19 2014 Alex Wood <awood@redhat.com> 1.0.0-2
 - Update version requirements for subscription-manager
 
